@@ -155,19 +155,19 @@ const states = [
 ];
 
 function App() {
-  const [state, setState] = useState(0);
-	const [city, setCity] = useState(0);
-	const [town, setTown] = useState(0);
+  const [state, setState] = useState(1);
+	const [city, setCity] = useState(1);
+	const [town, setTown] = useState(1);
 
 	const handleStateChange = (event) =>{
 		setState(event.target.value);
-		setCity(0);
-		setTown(0);
+		setCity(1);
+		setTown(1);
 	}
 
 	const handleCityChange = (event) =>{
 		setCity(event.target.value);
-		setTown(0);
+		setTown(1);
 	}
 
 	const handleTownChange = (event) =>{
@@ -176,7 +176,7 @@ function App() {
   return <div id="main">
     <div className="main-section">
     <div className="dropdown-section">
-				<section id="state" className="dropdown-section state-section">
+				<section id={index} className="dropdown-section state-section">
 					<label>States: </label>
 
 					<select value={state} onChange={handleStateChange}>
