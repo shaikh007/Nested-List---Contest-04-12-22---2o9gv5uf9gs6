@@ -181,7 +181,7 @@ function App() {
 
 					<select value={state} onChange={handleStateChange}>
 						{
-							states.map((state, index) => <option key={`state${index}`} value={index}>{state.name}</option>)
+							states.map((state, index) => <option key={`state-${index}`} value={index}>{state.name}</option>)
 						}
 					</select>
 				</section>
