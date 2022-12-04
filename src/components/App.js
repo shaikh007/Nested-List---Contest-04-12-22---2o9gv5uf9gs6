@@ -176,7 +176,7 @@ function App() {
   return <div id="main">
     <div className="main-section">
     <div className="dropdown-section">
-				<section id={index} className="dropdown-section state-section">
+				<section id="state" className="dropdown-section state-section">
 					<label>States: </label>
 
 					<select value={state} onChange={handleStateChange}>
