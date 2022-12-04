@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, {useState, useReducer } from "react";
 import "./../styles/App.css";
 
 // Do not alter the states const and values inside it.
@@ -155,7 +155,57 @@ const states = [
 ];
 
 function App() {
-  return <div id="main"></div>;
+  const [state, setState] = useState(0);
+	const [city, setCity] = useState(0);
+	const [town, setTown] = useState(0);
+
+	const handleStateChange = (event) =>{
+		setState(event.target.value);
+		setCity(0);
+		setTown(0);
+	}
+
+	const handleCityChange = (event) =>{
+		setCity(event.target.value);
+		setTown(0);
+	}
+
+	const handleTownChange = (event) =>{
+		setTown(event.target.value);
+	}
+  return <div id="main">
+    <div className="main-section">
+    <div className="dropdown-section">
+				<section id="state" className="dropdown-section state-section">
+					<label>States: </label>
+
+					<select value={state} onChange={handleStateChange}>
+						{
+							states.map((state, index) => <option key={`state${index}`} value={index}>{state.name}</option>)
+						}
+					</select>
+				</section>
+				<section id="city" className="dropdown-section state-section">
+					<label>Cities: </label>
+
+					<select value={city} onChange={handleCityChange}>
+						{
+							states[state].cities.map((currentCity, index) => <option key={`city-${index}`} value={index}>{currentCity.name}</option>)
+						}
+					</select>
+				</section>
+				<section id="landmark" className="dropdown-section state-section">
+					<label>Towns: </label>
+
+					<select value={town} onChange={handleTownChange}>
+						{
+							states[state].cities[city].towns.map((town, index) => <option key={`town-${index}`} value={index} >{town.name}</option>)
+						}
+					</select>
+				</section>
+			</div>
+    </div>
+  </div>;
 }
 
 export default App;
